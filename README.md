@@ -1,7 +1,8 @@
 <h1> Getting Started  </h1>
 
 <p>First you need PHP version of 8.0.10, apache2, MySQL, and Composer installed.</P>
-
+<p> clone project:</p>
+<p> git clone https://github.com/CliffMathebula/D6_API.git </p> 
 <p>open the file named .env.example and changee the database name and password and save it as .env</p>
 
 <p> Run the following commands:</p>
