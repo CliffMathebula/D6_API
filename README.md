@@ -10,6 +10,6 @@ composer install<br/>
 php artisan key:generate <br/>
 php artisan jwt:secret<br/>
 php artisan cache:clear<br/>
-php artisan config:clear<br/>
+php artisan config:clear<br/><br/>
 
 <p>then open your postman and start testing the API, Please refer to pdf file named(post-man-usage.pdf) Document attached for reference of postman URI to be used and Http methods per route.
