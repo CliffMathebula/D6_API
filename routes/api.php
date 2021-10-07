@@ -29,5 +29,6 @@ Route::group([
     Route::post('/aquariums', [AquariumsController::class, 'create'])->name('aquariums.create'); 
     Route::post('/fish', [FishController::class, 'create'])->name('fish.create');    
     Route::get('/fish', [FishController::class, 'show_all'])->name('fish.show_all'); 
-    Route::get('/get_fish', [FishController::class, 'find_fish']); 
+    Route::get('/get_fish', [FishController::class, 'find_fish']);
+    Route::get('/aquafish', [FishController::class, 'findByAquarium']); 
 });
