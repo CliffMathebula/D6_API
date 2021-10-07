@@ -19,9 +19,6 @@ class FishController extends Controller
         $this->middleware('auth:api', ['except' => ['register']]);
     }
 
-
-
-
     /**
      * Show all fish.
      *
@@ -39,24 +36,26 @@ class FishController extends Controller
         return response()->json('Error', 404);
     }
 
-
-
-    
     /**
      * Show all fish by given aquarium.
      *
      * @return \Illuminate\Http\Response
      */
-    public function findByAquarium($aqua_id)
+    public function findByAquarium(Request $request)
     {
-        if ($all_fish = Fish::all()->where('aquarium_id','=',$aqua_id)) {
+        $aqua_id = $request['aqua_id'];
 
+        $fish = Fish::select(['*'])->where('aquarium_id', '=', $aqua_id)->get();
+        if (count($fish) > 0) {
             return response()->json(
-                $all_fish,
+                $fish,
                 200
             );
         }
-        return response()->json('Error', 404);
+        return response()->json([
+            'Error' => 'Not available',
+            'Code' => 404
+        ]);
     }
 
     /**
@@ -64,19 +63,21 @@ class FishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function find_fish($id)
+    public function find_fish(Request $request)
     {
-
-        if ($fish = Fish::find($id)) {
+        $id = $request['id'];
+        $fish = Fish::find($id);
+        if (count($fish) > 0){
             return response()->json(
                 $fish,
                 200
             );
         }
-        return response()->json('Error', 404);
+        return response()->json([
+            'Error' => 'Not available',
+            'Code' => 404
+        ]);
     }
-
-
 
     /**
      * add aquarium
@@ -127,4 +128,5 @@ class FishController extends Controller
         }
         return response()->json($errors, 400);
     }
+
 }
