@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\AquariumsController;
+use App\Http\Controllers\FishController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,5 +25,7 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    Route::post('/aquariums', [AquariumsController::class, 'create'])->name('aquariums.create'); 
+    Route::post('/fish', [FishController::class, 'create'])->name('fish.create');    
 });
