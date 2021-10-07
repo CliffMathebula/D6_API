@@ -39,6 +39,26 @@ class FishController extends Controller
         return response()->json('Error', 404);
     }
 
+
+
+    
+    /**
+     * Show all fish by given aquarium.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function findByAquarium($aqua_id)
+    {
+        if ($all_fish = Fish::all()->where('aquarium_id','=',$aqua_id)) {
+
+            return response()->json(
+                $all_fish,
+                200
+            );
+        }
+        return response()->json('Error', 404);
+    }
+
     /**
      * find single fish
      *
