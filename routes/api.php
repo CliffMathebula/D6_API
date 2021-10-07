@@ -27,8 +27,8 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
     Route::post('/aquariums', [AquariumsController::class, 'create'])->name('aquariums.create'); 
-    Route::post('/fish', [FishController::class, 'create'])->name('fish.create');    
-    Route::get('/fish', [FishController::class, 'show_all'])->name('fish.show_all'); 
+    Route::post('/fish', [FishController::class, 'create'])->name('fish.create'); //create fish uses post method
+    Route::get('/fish', [FishController::class, 'show_all'])->name('fish.show_all');//gets all fish, this uses get method
     Route::get('/get_fish', [FishController::class, 'find_fish']);
     Route::get('/aquafish', [FishController::class, 'findByAquarium']); 
 });

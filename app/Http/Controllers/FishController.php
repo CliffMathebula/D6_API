@@ -66,7 +66,8 @@ class FishController extends Controller
     public function find_fish(Request $request)
     {
         $id = $request['id'];
-        $fish = Fish::find($id);
+        $fish = Fish::select(['*'])->where('id', '=', $id)->get();
+        
         if (count($fish) > 0){
             return response()->json(
                 $fish,
